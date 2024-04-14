@@ -32,5 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 
-src/main/java/hh/sof3/musiclibrary/MusiclibraryApplication.java
 
