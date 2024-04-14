@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Song to Playlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="mt-4 mb-4">Add Song</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Add Song to Playlist:</h3>
+                    <form th:object="${playlist}" th:action="@{/playlist/{playlistid}/addSong(playlistid=${playlist.playlistid})}" action="#" method="post">
+                        <div class="form-group">
+                            <label for="songId">Select Song:</label>
+                            <select id="songId" name="songId" class="form-control">
+                                <option th:each="song : ${songs}" th:value="${song.id}"><span th:text="${song.name}"></span> - <span th:text="${song.artist}"></span></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success mr-2" type="submit">Add Song</button>
+                            <a class="btn btn-danger" th:href="@{/playlist/{id}/songs(id=${playlist.playlistid})}">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

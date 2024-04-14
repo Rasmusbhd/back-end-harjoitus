@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Playlists</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-between align-items-center mb-4">
+        <div class="col-md-4">
+            <h1>Playlists</h1>
+        </div>
+        <div class="col-md-4 text-center">
+            <h3>Welcome <span sec:authentication="name"></span></h3>
+        </div>
+        <div class="col-md-4 text-right">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="btn btn-sm btn-danger" />
+            </form>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th></th>
+                <th sec:authorize="hasAuthority('ADMIN')"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="playlist : ${playlists}">
+                <td th:text="${playlist.name}"></td>
+                <td th:text="${playlist.description}"></td>
+                <td>
+                    <a class="btn btn-dark btn-sm" th:href="@{/playlist/{id}/songs(id=${playlist.playlistid})}">View Playlist</a>
+                </td>
+                <td sec:authorize="hasAuthority('ADMIN')">
+                    <a class="btn btn-danger btn-sm" th:href="@{/deleteplaylist/{id}(id=${playlist.playlistid})}" onclick="return confirm('Are you sure you want to delete this playlist?')">Delete</a>
+                </td>
+                <td sec:authorize="hasAuthority('ADMIN')">
+                    <a class="btn btn-primary btn-sm" th:href="@{/editplaylist/{id}(id=${playlist.playlistid})}">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row justify-content-between">
+        <div class="col-md-4">
+            <a class="btn btn-success btn-sm" th:href="@{/addplaylist}">Add Playlist</a>
+        </div>
+        <div class="col-md-4 text-right">
+            <a class="btn btn-info btn-sm" th:href="@{/songlist}">Go To Songlist</a>
+            <a class="btn btn-info btn-sm" th:href="@{/index}">Go To Main Page</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
