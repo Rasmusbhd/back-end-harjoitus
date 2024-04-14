@@ -20,6 +20,7 @@
                                 <option th:each="song : ${songs}" th:value="${song.id}"><span th:text="${song.name}"></span> - <span th:text="${song.artist}"></span></option>
                             </select>
                         </div>
+                        <br />
                         <div class="form-group">
                             <button class="btn btn-success mr-2" type="submit">Add Song</button>
                             <a class="btn btn-danger" th:href="@{/playlist/{id}/songs(id=${playlist.playlistid})}">Cancel</a>

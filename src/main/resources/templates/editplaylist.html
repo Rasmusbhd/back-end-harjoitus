@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Edit Playlist</title>
+    <title>Edit Song</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
 
@@ -17,7 +18,8 @@
     <input type="text" th:field="*{description}" required/><br/>
         
 <div style="clear: both; display: block; height: 10px;"></div>
-<input type="submit" value="Save Playlist"></input>
+<input class="btn btn-success" type="submit" value="Save Playlist"></input>
+<a class="btn btn-danger" th:href="@{/playlists}">Cancel</a>
 
 </form>
 </div>

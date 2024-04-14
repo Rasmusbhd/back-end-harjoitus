@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Edit Song</title>
-</head>
+    <head>
+        <title>Edit Song</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    </head>
 <body>
 
 <h2>Edit Song</h2>
@@ -26,7 +27,8 @@
     </select>
         
 <div style="clear: both; display: block; height: 10px;"></div>
-<input type="submit" value="Save Song"></input>
+<input class="btn btn-success" type="submit" value="Save Song"></input>
+<a class="btn btn-danger" th:href="@{/songlist}">Cancel</a>
 
 </form>
 </div>
