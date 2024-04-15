@@ -47,7 +47,7 @@ public class SongController {
     public String saveSong(@Valid Song song, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("genres", genreRepository.findAll());
-            return "addsong"; // Return the form again if validation fails
+            return "addsong";
         }
         songRepository.save(song);
         return "redirect:/songlist";
